@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <p className='text-sm font-mono'>Daneseuwu, the source code is available on GitHub.</p>
+        <p className='text-sm font-mono text-center'>Daneseuwu, the source code is available on GitHub.</p>
     )
 }
 

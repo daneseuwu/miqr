@@ -37,21 +37,18 @@ const Qr = () => {
     }
 
     return (
-        <div className='container mx-auto pt-20'>
-            <div className='flex flex-col justify-center items-center'>
+        <div className='flex flex-col items-center justify-center h-full'>
+            <QRCode id="qr-code" size={250} value={qrValue || 'https://ui.shadcn.com'} />
 
-                <QRCode id="qr-code" size={250} value={qrValue || 'https://ui.shadcn.com'} />
+            {qrValue &&
+                <Button type='button' variant={'secondary'} className='mt-6 cursor-pointer font-mono' onClick={downloadQR}>Download</Button>
+            }
 
-                {qrValue &&
-                    <Button type='button' variant={'secondary'} className='mt-6 cursor-pointer font-mono' onClick={downloadQR}>Download</Button>
-                }
+            <div className='flex flex-row gap-2 mt-6'>
 
-                <div className='flex flex-row gap-2 mt-6'>
+                <Input className='md:w-72 font-mono' value={inputValue} onChange={(e) => setInputValue(e.target.value)} placeholder='https://ui.shadcn.com' />
+                <Button type='button' className='cursor-pointer font-mono' onClick={generateQr} disabled={inputValue == ''}>Generate</Button>
 
-                    <Input className='md:w-72 font-mono' value={inputValue} onChange={(e) => setInputValue(e.target.value)} placeholder='https://ui.shadcn.com' />
-                    <Button type='button' className='cursor-pointer font-mono' onClick={generateQr} disabled={inputValue == ''}>Generate</Button>
-
-                </div>
             </div>
         </div>
     )
