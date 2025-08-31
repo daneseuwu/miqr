@@ -44,9 +44,9 @@ const Qr = () => {
                 <Button type='button' variant={'secondary'} className='mt-6 cursor-pointer font-mono' onClick={downloadQR}>Download</Button>
             }
 
-            <div className='flex flex-row gap-2 mt-6'>
+            <div className='flex flex-col gap-2 mt-6 md:w-72 w-full '>
 
-                <Input className='md:w-72 font-mono' value={inputValue} onChange={(e) => setInputValue(e.target.value)} placeholder='https://ui.shadcn.com' />
+                <Input className='font-mono' value={inputValue} onChange={(e) => setInputValue(e.target.value)} placeholder='https://ui.shadcn.com' />
                 <Button type='button' className='cursor-pointer font-mono' onClick={generateQr} disabled={inputValue == ''}>Generate</Button>
 
             </div>

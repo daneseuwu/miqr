@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input'
 import { useState } from 'react'
 import QRCode from "react-qr-code"
 
-const Qr = () => {
+const QrWifi = () => {
     const [qrValue, setQrValue] = useState('')
     const [ssid, setSsid] = useState('')
     const [password, setPassword] = useState('')
@@ -39,54 +39,47 @@ const Qr = () => {
     }
 
     return (
-        <div className='container mx-auto pt-20'>
-            <div className='flex flex-col justify-center items-center'>
 
-                <QRCode id="qr-code" value={qrValue} />
+        <div className='flex flex-col items-center justify-center h-full'>
+            <QRCode id="qr-code" size={250} value={qrValue || 'https://ui.shadcn.com'} />
 
-                {qrValue && (
-                    <Button variant={'secondary'} className='mt-6' onClick={downloadQR}>
-                        Download
-                    </Button>
-                )}
+            {qrValue &&
+                <Button type='button' variant={'secondary'} className='mt-6 cursor-pointer font-mono' onClick={downloadQR}>Download</Button>
+            }
 
-                <div className='flex flex-col gap-4 mt-6 w-full md:w-80'>
+            <div className='flex flex-col gap-2 mt-6 md:w-72 w-full'>
 
-                    <Input
-                        value={ssid}
-                        onChange={(e) => setSsid(e.target.value)}
-                        placeholder='Nombre de la red (SSID)'
-                    />
+                <Input
+                    className='font-mono'
+                    value={ssid}
+                    onChange={(e) => setSsid(e.target.value)}
+                    placeholder='Nombre de la red (SSID)'
+                />
 
-                    <Input
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder='Contraseña'
-                        type="password"
-                    />
+                <Input
+                    className='font-mono'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder='Contraseña'
+                    type="password"
+                />
 
-                    <select
-                        className="border rounded p-2"
-                        value={encryption}
-                        onChange={(e) => setEncryption(e.target.value)}
-                    >
-                        <option value="WPA">WPA/WPA2</option>
-                        <option value="WEP">WEP</option>
-                        <option value="nopass">Sin contraseña</option>
-                    </select>
+                <select
+                    className="border rounded p-2 font-mono"
+                    value={encryption}
+                    onChange={(e) => setEncryption(e.target.value)}
+                >
+                    <option value="WPA">WPA/WPA2</option>
+                    <option value="WEP">WEP</option>
+                    <option value="nopass">Sin contraseña</option>
+                </select>
 
-                    <Button
-                        type='button'
-                        className='cursor-pointer'
-                        onClick={generateWifiQr}
-                        disabled={!ssid}
-                    >
-                        Generate WiFi QR
-                    </Button>
-                </div>
+                <Button type='button' className='cursor-pointer font-mono' onClick={generateWifiQr} disabled={!ssid}>Generate</Button>
+
             </div>
         </div>
+
     )
 }
 
-export default Qr
+export default QrWifi
