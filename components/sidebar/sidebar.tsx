@@ -27,6 +27,12 @@ const options: SidebarOption[] = [
         name: "WI-FI",
         href: "/qr-wifi",
         // icon: <NotebookIcon />
+    },
+    {
+        id: 3,
+        name: "Shortly",
+        href: "/shortly",
+        // icon: <NotebookIcon />
     }
 
 
